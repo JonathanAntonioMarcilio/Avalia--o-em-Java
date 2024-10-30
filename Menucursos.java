@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Menucursos {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         Scanner scanner = new Scanner(System.in);
 
         int op = 0, idProf, idCurso, cargaHora, idAluno;
@@ -37,6 +37,7 @@ public class Menucursos {
                     cargaHora = scanner.nextInt();
                     System.out.println("Didite o id do professor que lecionará esse curso: ");
                     idProf = scanner.nextInt();
+                    Professor.verificaId(idProf); // função para verificar se o id do professor existe
                     Professor professor = Professor.buscaProfessor(idProf); // função para ligar o id do professor com a classe do curso
                     new Curso(idCurso, nomeCurso, cargaHora, idProf);
                     break;
@@ -52,6 +53,7 @@ public class Menucursos {
                     cpf = scanner.next();
                     System.out.println("Digite o id do curso que o aluno irá cursar: ");
                     idCurso = scanner.nextInt();
+                    Curso.verificaId(idCurso); // função para verificar se o id do curso existe
                     Curso curso = Curso.buscaCurso(idCurso); // função para ligar o id do curso com a classe do aluno
                     new Aluno(idAluno, nomeAluno, dtNasc, cpf, idCurso);
                     break;
